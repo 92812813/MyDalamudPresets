@@ -1,7 +1,7 @@
 --[=====[
 [[SND Metadata]]
 author: baanderson40 || orginially pot0to  ||  日本語化 小鳥遊レイ
-version: 3.1.4 ja2
+version: 3.1.5 ja
 description: |
   このスクリプトでできること: 
   - バイカラージェムの所持数が上限に近づくとバイカラージェム納品証（新旧どちらでも）へ交換に行きます
@@ -18,10 +18,9 @@ description: |
     Support via    https://ko-fi.com/baanderson40
   ※小鳥遊コメント※
   - オプションプラグインでGC納品用にDeliverooが必要と書かれていますが、AutoRetainerでGC納品するように書かれており、また実際の動作でもAutoRetainerで納品が行われています。軍票交換品の設定などにご注意ください。
-  - 自動スキル回しプラグインとしてBMR/VBMを使用する場合はコンフィグ設定から必ずプリセット名を入力してください。
-  - 3354行目付近の「-- バディチョコボ」の項目で再召喚するタイマーの残り時間を設定できます。
-  - 3477行目付近の「--FATE終了後の動作設定」の項目で、GC納品を行う所持品の空き、修理を行う耐久値などが設定できます。
-  - Companionスクリプトの日本語版については現在準備中です。
+  - 自動スキル回しプラグインとしてBMR/VBMを使用する場合は各コンフィグ設定に必ずプリセット名を入力してください。
+  - 3399行目付近の「-- バディチョコボ」の項目で再召喚するタイマーの残り時間を設定できます。
+  - 3522行目付近の「--FATE終了後の動作設定」の項目で、GC納品を行う所持品の空き、修理を行う耐久値などが設定できます。
 
 plugin_dependencies:
 - Lifestream
@@ -289,6 +288,8 @@ configs:
 ********************************************************************************
 *                                  Changelog                                   *
 ********************************************************************************
+    -> 3.1.5 ja   3.1.5の日本語クライアント対応
+    -> 3.1.5      Added HW fate definitions
     -> 3.1.4 ja2  文法ミスの修正
     -> 3.1.4 ja   3.1.4の日本語クライアント対応
     -> 3.1.4      Modified VBM/BMR combat commands to use IPCs
@@ -617,8 +618,15 @@ FatesData = {
         zoneId = 397,
         fatesList= {
             collectionsFates= {},
-            otherNpcFates= {},
+            otherNpcFates= {
+                { fateName="巡礼の騎士", npcName="巡礼の騎士" },
+                { fateName="功績泥棒「卑怯者のウェルナー」", npcName="直情のボードネ" },
+                { fateName="若き竜騎士「鋭槍のアランベール」", npcName="聖フィネア連隊の騎兵" },
+            },
             fatesWithContinuations = {},
+            specialFates = {
+                "ヤク喰い巨人「ズウティ」", --ズウティ, 長いボスFATE。
+            },
             blacklistedFates= {}
         }
     },
@@ -636,10 +644,20 @@ FatesData = {
         zoneName = "アバラシア雲海",
         zoneId = 401,
         fatesList= {
-            collectionsFates= {},
-            otherNpcFates= {},
+            collectionsFates= {
+                { fateName="空の上の雲", npcName="ズンド族の若者"},
+            },
+            otherNpcFates= {
+                { fateName="猫まっしぐら", npcName="クラウドトップの薔薇騎兵"},
+                { fateName="逃亡者", npcName="ズンド族の逃亡奴隷"}
+            },
             fatesWithContinuations = {},
-            blacklistedFates= {}
+            specialFates = {
+                "暴食の岩人形「グランズイーター」", --グランズイーター
+            },
+            blacklistedFates= {
+                "逃亡者", --護衛FATE
+            }
         }
     },
     {
@@ -648,7 +666,12 @@ FatesData = {
         fatesList= {
             collectionsFates= {},
             otherNpcFates= {},
-            fatesWithContinuations = {},
+            fatesWithContinuations = {
+                { fateName="バグ報告ナンバー壱九九", npcName="認証システム" },
+            },
+            specialFates = {
+                "太古の脅威：ノクチルカ撃滅戦", --ノクチルカ
+            },
             blacklistedFates= {}
         }
     },
@@ -656,11 +679,16 @@ FatesData = {
         zoneName = "高地ドラヴァニア",
         zoneId = 398,
         fatesList= {
-            collectionsFates= {},
-            otherNpcFates= {},
+            collectionsFates= {
+                { fateName="アンブロークン・アロー", npcName="テイルフェザーの猟師" },
+            },
+            otherNpcFates= {
+                { fateName="美しく複雑なアロマ", npcName="芳醇のモッシー・ピーク" },
+            },
             fatesWithContinuations = {},
             specialFates = {
-                "幻影の女王「クァールレギナ」" --クァールレギナ
+                "幻影の女王「クァールレギナ」", --クァールレギナ
+                "爆着の甲竜「タラスク」", --タラスク
             },
             blacklistedFates= {}
         }
@@ -672,8 +700,16 @@ FatesData = {
         fatesList= {
             collectionsFates= {},
             otherNpcFates= {},
-            fatesWithContinuations = {},
-            blacklistedFates= {}
+            fatesWithContinuations = {
+                { fateName="悪魔の機械", npcName="人情のスリックトリクス" },
+                { fateName="ビブロフィリアの憂鬱", npcName="愛書家のブラウフィクス" },
+            },
+            specialFates = {
+                "全面改修機「III号ゴブリガードJ型」", --ボス戦
+            },
+            blacklistedFates= {
+                "使い魔はつらいよ", --護衛FATE
+            }
         }
     },
     {
@@ -681,7 +717,15 @@ FatesData = {
         zoneId=400,
         fatesList= {
             collectionsFates= {},
-            otherNpcFates= {},
+            otherNpcFates= {
+                { fateName="雲海の問題児「悪童のモグーシ」", npcName="優等のモグポポ" },
+                { fateName="白亜の宮殿防衛戦：子竜救援", npcName="白亜の子竜" },
+                { fateName="聖と邪の交わるひずみ", npcName="白亜の子竜" },
+                { fateName="さよならアルケオダイノス", npcName="悪童のモグーシ" },
+                { fateName="吸引力は変わらない", npcName="ふきふきモーグリ" },
+                { fateName="モーグリ金融道", npcName="ぴかぴかモーグリ" },
+                { fateName="夜と霧", npcName="フィアラル" },
+            },
             fatesWithContinuations = {},
             blacklistedFates= {}
         }
