@@ -61,7 +61,7 @@ https://github.com/baanderson40/SND_Scripts/blob/main/Fates/Occult%20Demiatma%20
 ```
 ``` -->
 <br/>
-<img width="399" height="291" alt="Image" src="https://github.com/user-attachments/assets/2038f686-9678-46ff-aa63-6aadcd4945eb" /><br/>
+<img width="399" height="291" alt="Image" src="https://github.com/user-attachments/assets/7181c7f4-24b2-4479-8231-3926ea7fb5f3" /><br/>
 <img width="704" height="227" alt="Image" src="https://github.com/user-attachments/assets/dcd89f9d-8a4a-42b6-ba0b-b269e90f685c" />
 
 ### or
